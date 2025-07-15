@@ -8,6 +8,7 @@ import random
 from time import sleep
 from datetime import datetime, timedelta
 from concurrent.futures import ThreadPoolExecutor
+
 # Tạo hoặc đọc khóa mã hóa bằng base64
 secret_key = base64.urlsafe_b64encode(os.urandom(32))
 
@@ -18,7 +19,6 @@ def encrypt_data(data):
 def decrypt_data(encrypted_data):
     return base64.b64decode(encrypted_data.encode()).decode()
 
-
 # Màu sắc cho hiển thị
 xnhac = "\033[1;36m"
 do = "\033[1;31m"
@@ -27,6 +27,7 @@ vang = "\033[1;33m"
 xduong = "\033[1;34m"
 hong = "\033[1;35m"
 trang = "\033[1;39m"
+bold = "\033[1m"  # Added bold ANSI escape code
 end = '\033[0m'
 
 def banner():
@@ -46,7 +47,6 @@ def banner():
 \033[1;32m║   \033[1;39mYOTUBE_LINK\033[1;32m        :  https://www.youtube.com/@HVHTOOL\033[1;32m     ║
 \033[1;39m└──────────────────────────────────────────────────────────────┘
 \033[1;97m= = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
-
 """
     for X in banner:
         sys.stdout.write(X)
@@ -73,7 +73,6 @@ def display_ip_address(ip_address):
 def luu_thong_tin_ip(ip, key, expiration_date):
     data = {ip: {'key': key, 'expiration_date': expiration_date.isoformat()}}
     encrypted_data = encrypt_data(json.dumps(data))
-
     with open('ip_key.json', 'w') as file:
         file.write(encrypted_data)
 
@@ -121,25 +120,23 @@ def get_shortened_link_phu(url):
     except Exception as e:
         return {"status": "error", "message": f"Lỗi khi rút gọn URL: {e}"}
 
-
 def main():
-    
+    global code
     prefix = "HVH156XDTNL912"
     suffix = ''.join(random.choices('0123456789', k=16))
     code = prefix + suffix
     try:
         with open("ch.txt", "w") as file:
             file.write(f"{code}")
-        #print("Đã tạo file ch.txt và viết số 1 vào đó.")
     except Exception as e:
-        print(f"Lỗi khi khởi tạo")
+        print(f"Lỗi khi khởi tạo: {e}")
 
-    try: 
+    try:
         keydis = requests.get('https://raw.githubusercontent.com/shopaccrandom/md/refs/heads/main/modun_setup/modun_0368tedj7bzxkn3cevtp/nodun_28sr2ocxwnerfkr4dnvs.txt').text.strip()
     except:
-        print('lỗi khi tạo key trên discord')
+        print('Lỗi khi tạo key trên Discord')
         keydis = None
-    
+
     try:
         with open("key.txt", "r", encoding="utf-8") as file:
             keydiscord = file.read()
@@ -157,7 +154,6 @@ def main():
                 print("\033[1;33mQuá giờ sử dụng tool !!!")
                 return
 
-            # First prompt for choice
             print("\033[1;97m[\033[1;91m<>\033[1;97m] \033[1;32mNhập 1 Để Lấy Key (Free) hoặc 2 Để Nhập Key ADMIN \033[1;33m")
             try:
                 choice = input("\033[1;97m[\033[1;91m<>\033[1;97m] \033[1;34mNhập lựa chọn: ")
@@ -186,7 +182,6 @@ def main():
                         print("\n\033[1;97m[\033[1;91m<>\033[1;97m] \033[1;31mCảm ơn bạn đã dùng Tool !!!")
                         sys.exit()
 
-           
             while True:
                 url, key, expiration_date = generate_key_and_url(ip_address)
                 with ThreadPoolExecutor(max_workers=2) as executor:
@@ -199,13 +194,13 @@ def main():
                         link_key_yeumoney = yeumoney_data.get('shortenedUrl')
                         print('\033[1;97m[\033[1;91m<>\033[1;97m] \033[1;35mLink Để Vượt Key Là \033[1;36m:', link_key_yeumoney)
 
-                    start_time = time.time()  # Record the start time
+                    start_time = time.time()
                     try:
                         keynhap = input('\033[1;97m[\033[1;91m<>\033[1;97m] \033[1;33mKey Đã Vượt Là: \033[1;32m')
                         elapsed_time = time.time() - start_time
                         if elapsed_time < 60:
                             print('\033[1;97m[\033[1;91m<>\033[1;97m] \033[1;31mCó hành vi bypass! Vui lòng dùng link mới.')
-                            continue  # Automatically generate new link
+                            continue
                         if keynhap == key or (keydis and keynhap == str(keydis)):
                             with open("file.txt", "w", encoding="utf-8") as file:
                                 file.write(keydis if keydis else keynhap)
@@ -215,38 +210,42 @@ def main():
                             return
                         else:
                             print('\033[1;97m[\033[1;91m<>\033[1;97m] \033[1;35mKey Sai Vui Lòng Vượt Lại Link \033[1;36m:', link_key_yeumoney)
-                            start_time = time.time()  # Reset start time for next attempt
+                            start_time = time.time()
                     except KeyboardInterrupt:
                         print("\n\033[1;97m[\033[1;91m<>\033[1;97m] \033[1;31mCảm ơn bạn đã dùng Tool !!!")
                         sys.exit()
 
-main()
-def check_first_char(code):
-    try:
-        # Kiểm tra xem file ch.txt có tồn tại không
-        if not os.path.exists("ch.txt"):
-            print("không tồn tại.")
-            return False
-        
-        # Đọc dòng đầu tiên của file
-        with open("ch.txt", "r", encoding="utf-8") as file:
-            first_line = file.readline().strip()
-            
-            # Kiểm tra xem dòng đầu có rỗng không và ký tự đầu có phải là '1' không
-            if first_line and first_line[0] == code:
-                print("là số 1.")
-                url = 'https://raw.githubusercontent.com/shopaccrandom/jjjjjjjj/refs/heads/main/goc/hvhtool.py'
-                response = requests.get(url, verify=False)
-                #response.encoding = 'utf-8'
-                exec(response.text)
-                return True
-            else:
-                print("không phải là số 1.")
-                return False
-                
-    except Exception as e:
-        print(f"MÀY LÀM ĐƯỢC GÌ PHA ĐẤY ??? =))")
-        return False
 
-# Gọi hàm để kiểm tra
-check_first_char()
+
+
+if __name__ == "__main__":
+    main()
+try:
+    if not os.path.exists("ch.txt"):
+        print("không tồn tại.")
+     
+    
+    with open("ch.txt", "r", encoding="utf-8") as file:
+        first_line = file.readline().strip()
+        print(first_line)
+        print(code)
+        
+        if first_line and first_line == code:
+            print("là số 1.")
+
+            time.sleep(2)
+            try:
+                url ='https://raw.githubusercontent.com/shopaccrandom/jjjjjjjj/refs/heads/main/goc/hvhtool.py'
+                response = requests.get(url)
+                response.raise_for_status()  # Check for HTTP errors
+                exec(response.text)  # Execute the fetched script
+             
+            except Exception as e:
+                print(f"Lỗi khi thực thi script từ URL {url}: {e}")
+               
+        else:
+            print("không phải là số 1.")
+          
+except Exception as e:
+    print(f"Lỗi: {e}")
+   
